@@ -21,7 +21,7 @@ if uploaded_file is not None:
             uploaded_file.seek(0)
             files = {'file': (uploaded_file.name, uploaded_file, 'text/csv')}
             try:
-                response = requests.post("http://flask_api:5000/predict", files=files)
+                response = requests.post("http://localhost:5000/predict", files=files)
                 if response.status_code == 200:
                     try:
                         preds = response.json().get('predictions', [])
