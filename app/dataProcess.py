@@ -71,10 +71,3 @@ def process(df):
 
     return df_clean
 
-'''
-explainer = shap.Explainer(model, df_scaled)
-shap_values = explainer(df_scaled)
-
-shap.plots.bar(shap_values)
-shap.plots.force(shap_values[0])
-'''
