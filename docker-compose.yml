@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  flask_api:
+    build: .
+    command: python flask_api.py
+    ports:
+      - "5000:5000"
+    networks:
+      - appnet
+
+  streamlit_ui:
+    build: .
+    command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - flask_api
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
